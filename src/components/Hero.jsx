@@ -38,7 +38,7 @@ export default function Hero() {
             <div className="hero__pizza-glow" aria-hidden="true" />
             <img
               src={restaurant.heroImage}
-              alt="Pizza de Kabana Pizz tout juste sortie du four"
+              alt="Le kiosque Kabana Pizz et son enseigne orange à Brie-Comte-Robert"
               className="hero__img"
               loading="eager"
             />

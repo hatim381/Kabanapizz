@@ -140,16 +140,16 @@
 
 .hero__card { position: relative; display: flex; justify-content: center; }
 .hero__photo {
-  width: clamp(240px, 32vw, 380px);
-  aspect-ratio: 1;
-  border-radius: 50%;
+  width: clamp(260px, 34vw, 400px);
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   position: relative;
   border: 3px solid var(--bark);
   box-shadow: var(--shadow), 0 0 80px -20px rgba(232, 84, 30, 0.5);
   animation: float 6s ease-in-out infinite;
 }
-@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+@keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
 .hero__pizza-glow {
   position: absolute;
   inset: -25%;
