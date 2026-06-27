@@ -36,53 +36,60 @@ links:
 
 # Horaires d'ouverture (format 24h). Laisser vide = fermé.
 # slot1 = service du midi, slot2 = service du soir.
+# Source : flyer officiel. Jours fériés : 18h00–22h00 (non géré par le site).
 hours:
-  monday:    { slot1: ["11:30", "14:00"], slot2: ["18:00", "22:30"] }
-  tuesday:   { slot1: ["11:30", "14:00"], slot2: ["18:00", "22:30"] }
-  wednesday: { slot1: ["11:30", "14:00"], slot2: ["18:00", "22:30"] }
-  thursday:  { slot1: ["11:30", "14:00"], slot2: ["18:00", "22:30"] }
-  friday:    { slot1: ["11:30", "14:00"], slot2: ["18:00", "23:00"] }
-  saturday:  { slot1: [],                 slot2: ["18:00", "23:00"] }
-  sunday:    { slot1: [],                 slot2: ["18:00", "22:30"] }
+  monday:    { slot1: [],                 slot2: ["18:30", "21:30"] }
+  tuesday:   { slot1: ["11:30", "13:45"], slot2: ["18:30", "21:30"] }
+  wednesday: { slot1: ["11:30", "13:45"], slot2: ["18:30", "21:30"] }
+  thursday:  { slot1: ["11:30", "13:45"], slot2: ["18:30", "21:30"] }
+  friday:    { slot1: ["11:30", "13:45"], slot2: ["18:30", "21:30"] }
+  saturday:  { slot1: ["11:30", "13:45"], slot2: ["18:30", "21:30"] }
+  sunday:    { slot1: [],                 slot2: ["18:30", "21:30"] }
 
-# Carte — prix TTC en euros.
+# Carte — prix TTC en euros (source : flyer officiel).
 menu:
+  # Toutes les pizzas sont au même tarif, selon la taille.
+  pizza_sizes:
+    - { label: "32 cm", pers: "2 pers.", price: 10.00 }
+    - { label: "40 cm", pers: "3 pers.", price: 17.00 }
   pizzas:
-    - name: "Cannibale"
-      base: "Sauce barbecue"
-      ingredients: ["mozzarella", "merguez", "bœuf", "poulet rôti"]
-      price: 12.50
-      tags: ["spicy", "viande"]
-    - name: "Indiana"
-      base: "Crème fraîche"
-      ingredients: ["mozzarella", "emmental", "poulet rôti", "oignons", "champignons"]
-      price: 12.50
-      tags: ["crème", "viande"]
-    - name: "Kabana"
-      base: "Sauce tomate"
-      ingredients: ["mozzarella", "peppéroni", "oignons", "poivrons", "olives", "champignons", "viande hachée", "emmental"]
-      price: 13.50
-      tags: ["signature", "viande"]
-      signature: true
-    - name: "Chèvre miel"
-      base: "Crème fraîche"
-      ingredients: ["mozzarella", "fromage de chèvre", "miel"]
-      price: 11.50
-      tags: ["crème", "végé"]
-    - name: "Margarita"
-      base: "Sauce tomate"
-      ingredients: ["mozzarella", "olives noires", "origan"]
-      price: 9.50
-      tags: ["tomate", "végé"]
-    - name: "Reine"
-      base: "Sauce tomate"
-      ingredients: ["mozzarella", "jambon", "champignons"]
-      price: 11.00
-      tags: ["tomate", "viande"]
+    - { name: "Margherita", base: "Sauce tomate", ingredients: ["mozzarella", "olives noires", "origan"], tags: ["tomate", "végé"] }
+    - { name: "4 fromages", base: "Sauce tomate ou crème fraîche", ingredients: ["mozzarella", "emmental", "bleu", "chèvre"], tags: ["tomate", "crème", "végé"] }
+    - { name: "Orientale", base: "Sauce tomate", ingredients: ["mozzarella", "merguez", "oignons", "poivrons"], tags: ["tomate", "viande"] }
+    - { name: "Tex mex", base: "Sauce tomate", ingredients: ["mozzarella", "oignons", "piments", "merguez", "bœuf"], tags: ["tomate", "viande", "spicy"] }
+    - { name: "Reine", base: "Sauce tomate", ingredients: ["mozzarella", "jambon", "champignons"], tags: ["tomate", "viande"] }
+    - { name: "Hawaïenne", base: "Sauce tomate", ingredients: ["mozzarella", "jambon", "ananas"], tags: ["tomate", "viande"] }
+    - { name: "Cannibale", base: "Sauce barbecue", ingredients: ["mozzarella", "merguez", "bœuf", "poulet rôti"], tags: ["viande", "spicy"] }
+    - { name: "Pêcheur", base: "Sauce tomate", ingredients: ["mozzarella", "thon", "oignons", "olives", "filet de crème fraîche"], tags: ["tomate", "poisson"] }
+    - { name: "Kabana", base: "Sauce tomate", ingredients: ["mozzarella", "peperonni", "oignons", "champignons", "poivrons", "olives noires", "bœuf"], tags: ["signature", "tomate", "viande"], signature: true }
+    - { name: "Campione", base: "Sauce tomate", ingredients: ["mozzarella", "viande hachée", "œuf", "emmental", "origan"], tags: ["tomate", "viande"] }
+    - { name: "Calzone (soufflé)", base: "Sauce tomate", ingredients: ["mozzarella", "jambon", "œuf"], tags: ["tomate", "viande"] }
+    - { name: "Savoyarde", base: "Crème fraîche", ingredients: ["mozzarella", "pommes de terre", "lardons", "emmental français"], tags: ["crème", "viande"] }
+    - { name: "Chèvre miel", base: "Crème fraîche", ingredients: ["mozzarella", "fromage de chèvre", "miel"], tags: ["crème", "végé"] }
+    - { name: "Norvégienne", base: "Crème fraîche", ingredients: ["mozzarella", "oignons", "saumon", "pommes de terre", "aneth"], tags: ["crème", "poisson"] }
+    - { name: "Végétarienne", base: "Sauce tomate", ingredients: ["mozzarella", "oignons", "champignons", "poivrons", "olives", "zeste d'origan"], tags: ["tomate", "végé"] }
+    - { name: "Indiana", base: "Crème fraîche", ingredients: ["mozzarella", "emmental", "poulet rôti", "oignons", "champignons"], tags: ["crème", "viande"] }
+    - { name: "Mexicaine", base: "Sauce tomate", ingredients: ["mozzarella", "pepperoni", "viande hachée", "piments", "poivrons", "emmental"], tags: ["tomate", "viande", "spicy"] }
+    - { name: "Raclette", base: "Crème fraîche", ingredients: ["mozzarella", "jambon", "lardons", "oignons frais", "pommes de terre", "fromage à raclette", "emmental"], tags: ["crème", "viande"] }
+    - { name: "Pepperonni Lover", base: "Sauce tomate", ingredients: ["mozzarella", "pepperoni halal"], tags: ["tomate", "viande"] }
+    - { name: "Jambon Lover", base: "Sauce tomate", ingredients: ["mozzarella", "jambon"], tags: ["tomate", "viande"] }
+    - { name: "Cheese Lover", base: "Sauce tomate", ingredients: ["mozzarella", "emmental"], tags: ["tomate", "végé"] }
+    - { name: "Merguez Lover", base: "Sauce tomate", ingredients: ["mozzarella", "merguez halal"], tags: ["tomate", "viande"] }
+  sides:
+    - { name: "Cheesy bread", price: 5.00 }
+    - { name: "Chicken wings (6 pièces)", price: 5.00 }
+    - { name: "Chickeninos (6 pièces)", price: 5.00 }
+    - { name: "Potatoes (300 g)", price: 5.00 }
+    - { name: "Brownie chocolat", price: 2.00 }
+  formule:
+    name: "Menu Kabanito"
+    price: 7.00
+    availability: "Midi et soir"
+    description: "Sandwich + frites + boisson 33 cl au choix (sauf bière) + une sauce (fromagère, algérienne, samouraï, burger)."
   drinks:
     - { name: "Canette 33 cl (Coca, Fanta…)", price: 1.50 }
-    - { name: "Bouteille de soda", price: 3.00 }
     - { name: "Red Bull 25 cl", price: 2.50 }
+    - { name: "Soda / Tropico / Lipton Ice Tea (1,25 ou 1,5 L)", price: 3.00 }
     - { name: "Oasis 2 L", price: 3.50 }
 
 # Identité visuelle (référence design — voir src/index.css)

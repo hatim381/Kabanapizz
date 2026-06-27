@@ -34,90 +34,247 @@ export const restaurant = {
 };
 
 // Horaires — facilement modifiables. 0 = dimanche … 6 = samedi
+// (source : flyer officiel. Jours fériés : 18h00–22h00, non géré ici.)
 export const hours = [
-  { day: "Lundi", index: 1, open: "11:30", close: "14:00", open2: "18:00", close2: "22:30" },
-  { day: "Mardi", index: 2, open: "11:30", close: "14:00", open2: "18:00", close2: "22:30" },
-  { day: "Mercredi", index: 3, open: "11:30", close: "14:00", open2: "18:00", close2: "22:30" },
-  { day: "Jeudi", index: 4, open: "11:30", close: "14:00", open2: "18:00", close2: "22:30" },
-  { day: "Vendredi", index: 5, open: "11:30", close: "14:00", open2: "18:00", close2: "23:00" },
-  { day: "Samedi", index: 6, open: "18:00", close: "23:00", open2: null, close2: null },
-  { day: "Dimanche", index: 0, open: "18:00", close: "22:30", open2: null, close2: null },
+  { day: "Lundi", index: 1, open: "18:30", close: "21:30", open2: null, close2: null },
+  { day: "Mardi", index: 2, open: "11:30", close: "13:45", open2: "18:30", close2: "21:30" },
+  { day: "Mercredi", index: 3, open: "11:30", close: "13:45", open2: "18:30", close2: "21:30" },
+  { day: "Jeudi", index: 4, open: "11:30", close: "13:45", open2: "18:30", close2: "21:30" },
+  { day: "Vendredi", index: 5, open: "11:30", close: "13:45", open2: "18:30", close2: "21:30" },
+  { day: "Samedi", index: 6, open: "11:30", close: "13:45", open2: "18:30", close2: "21:30" },
+  { day: "Dimanche", index: 0, open: "18:30", close: "21:30", open2: null, close2: null },
 ];
 
-// Photos des pizzas (facultatif) : déposez un fichier dans /public/pizzas/
-// (ex. /public/pizzas/cannibale.jpg) puis renseignez le champ `image` ci-dessous.
-// Tant que `image` est vide, un visuel de remplacement soigné s'affiche.
+// Toutes les pizzas sont au même tarif, selon la taille (cf. flyer).
+export const pizzaSizes = [
+  { id: "32", label: "32 cm", sub: "2 pers.", price: 10 },
+  { id: "40", label: "40 cm", sub: "3 pers.", price: 17 },
+];
+
+// Photos des pizzas : déposez simplement un fichier nommé d'après l'`id`
+// dans public/pizzas/  (ex. public/pizzas/kabana.jpg) — il s'affiche
+// automatiquement. Si le fichier n'existe pas (ou ne charge pas), un visuel
+// de remplacement soigné s'affiche à la place. Formats : .jpg, .png ou .webp
+// (gardez l'extension .jpg ci-dessous ou adaptez le champ `image`).
 export const pizzas = [
   {
-    id: "cannibale",
-    name: "Cannibale",
-    image: "",
-    base: "Sauce barbecue",
-    ingredients: ["mozzarella", "merguez", "bœuf", "poulet rôti"],
-    price: 12.5,
-    tags: ["spicy", "viande"],
-  },
-  {
-    id: "indiana",
-    name: "Indiana",
-    image: "",
-    base: "Crème fraîche",
-    ingredients: ["mozzarella", "emmental", "poulet rôti", "oignons", "champignons"],
-    price: 12.5,
-    tags: ["crème", "viande"],
-  },
-  {
-    id: "kabana",
-    name: "Kabana",
-    image: "",
-    base: "Sauce tomate",
-    ingredients: [
-      "mozzarella",
-      "peppéroni",
-      "oignons",
-      "poivrons",
-      "olives",
-      "champignons",
-      "viande hachée",
-      "emmental",
-    ],
-    price: 13.5,
-    tags: ["signature", "viande"],
-    signature: true,
-  },
-  {
-    id: "chevre-miel",
-    name: "Chèvre miel",
-    image: "",
-    base: "Crème fraîche",
-    ingredients: ["mozzarella", "fromage de chèvre", "miel"],
-    price: 11.5,
-    tags: ["crème", "végé"],
-  },
-  {
-    id: "margarita",
-    name: "Margarita",
-    image: "",
+    id: "margherita",
+    name: "Margherita",
+    image: "/pizzas/margherita.jpg",
     base: "Sauce tomate",
     ingredients: ["mozzarella", "olives noires", "origan"],
-    price: 9.5,
     tags: ["tomate", "végé"],
+  },
+  {
+    id: "quatre-fromages",
+    name: "4 fromages",
+    image: "/pizzas/quatre-fromages.jpg",
+    base: "Sauce tomate ou crème fraîche",
+    ingredients: ["mozzarella", "emmental", "bleu", "chèvre"],
+    tags: ["tomate", "crème", "végé"],
+  },
+  {
+    id: "orientale",
+    name: "Orientale",
+    image: "/pizzas/orientale.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "merguez", "oignons", "poivrons"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "tex-mex",
+    name: "Tex mex",
+    image: "/pizzas/tex-mex.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "oignons", "piments", "merguez", "bœuf"],
+    tags: ["tomate", "viande", "spicy"],
   },
   {
     id: "reine",
     name: "Reine",
-    image: "",
+    image: "/pizzas/reine.jpg",
     base: "Sauce tomate",
     ingredients: ["mozzarella", "jambon", "champignons"],
-    price: 11.0,
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "hawaienne",
+    name: "Hawaïenne",
+    image: "/pizzas/hawaienne.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "jambon", "ananas"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "cannibale",
+    name: "Cannibale",
+    image: "/pizzas/cannibale.jpg",
+    base: "Sauce barbecue",
+    ingredients: ["mozzarella", "merguez", "bœuf", "poulet rôti"],
+    tags: ["viande", "spicy"],
+  },
+  {
+    id: "pecheur",
+    name: "Pêcheur",
+    image: "/pizzas/pecheur.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "thon", "oignons", "olives", "filet de crème fraîche"],
+    tags: ["tomate", "poisson"],
+  },
+  {
+    id: "kabana",
+    name: "Kabana",
+    image: "/pizzas/kabana.jpg",
+    base: "Sauce tomate",
+    ingredients: [
+      "mozzarella",
+      "peperonni",
+      "oignons",
+      "champignons",
+      "poivrons",
+      "olives noires",
+      "bœuf",
+    ],
+    tags: ["signature", "tomate", "viande"],
+    signature: true,
+  },
+  {
+    id: "campione",
+    name: "Campione",
+    image: "/pizzas/campione.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "viande hachée", "œuf", "emmental", "origan"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "calzone",
+    name: "Calzone (soufflé)",
+    image: "/pizzas/calzone.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "jambon", "œuf"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "savoyarde",
+    name: "Savoyarde",
+    image: "/pizzas/savoyarde.jpg",
+    base: "Crème fraîche",
+    ingredients: ["mozzarella", "pommes de terre", "lardons", "emmental français"],
+    tags: ["crème", "viande"],
+  },
+  {
+    id: "chevre-miel",
+    name: "Chèvre miel",
+    image: "/pizzas/chevre-miel.jpg",
+    base: "Crème fraîche",
+    ingredients: ["mozzarella", "fromage de chèvre", "miel"],
+    tags: ["crème", "végé"],
+  },
+  {
+    id: "norvegienne",
+    name: "Norvégienne",
+    image: "/pizzas/norvegienne.jpg",
+    base: "Crème fraîche",
+    ingredients: ["mozzarella", "oignons", "saumon", "pommes de terre", "aneth"],
+    tags: ["crème", "poisson"],
+  },
+  {
+    id: "vegetarienne",
+    name: "Végétarienne",
+    image: "/pizzas/vegetarienne.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "oignons", "champignons", "poivrons", "olives", "zeste d'origan"],
+    tags: ["tomate", "végé"],
+  },
+  {
+    id: "indiana",
+    name: "Indiana",
+    image: "/pizzas/indiana.jpg",
+    base: "Crème fraîche",
+    ingredients: ["mozzarella", "emmental", "poulet rôti", "oignons", "champignons"],
+    tags: ["crème", "viande"],
+  },
+  {
+    id: "mexicaine",
+    name: "Mexicaine",
+    image: "/pizzas/mexicaine.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "pepperoni", "viande hachée", "piments", "poivrons", "emmental"],
+    tags: ["tomate", "viande", "spicy"],
+  },
+  {
+    id: "raclette",
+    name: "Raclette",
+    image: "/pizzas/raclette.jpg",
+    base: "Crème fraîche",
+    ingredients: [
+      "mozzarella",
+      "jambon",
+      "lardons",
+      "oignons frais",
+      "pommes de terre",
+      "fromage à raclette",
+      "emmental",
+    ],
+    tags: ["crème", "viande"],
+  },
+  {
+    id: "pepperonni-lover",
+    name: "Pepperonni Lover",
+    image: "/pizzas/pepperonni-lover.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "pepperoni halal"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "jambon-lover",
+    name: "Jambon Lover",
+    image: "/pizzas/jambon-lover.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "jambon"],
+    tags: ["tomate", "viande"],
+  },
+  {
+    id: "cheese-lover",
+    name: "Cheese Lover",
+    image: "/pizzas/cheese-lover.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "emmental"],
+    tags: ["tomate", "végé"],
+  },
+  {
+    id: "merguez-lover",
+    name: "Merguez Lover",
+    image: "/pizzas/merguez-lover.jpg",
+    base: "Sauce tomate",
+    ingredients: ["mozzarella", "merguez halal"],
     tags: ["tomate", "viande"],
   },
 ];
 
+// Accompagnements — prix unique TTC.
+export const sides = [
+  { id: "cheesy-bread", name: "Cheesy bread", price: 5 },
+  { id: "chicken-wings", name: "Chicken wings (6 pièces)", price: 5 },
+  { id: "chickeninos", name: "Chickeninos (6 pièces)", price: 5 },
+  { id: "potatoes", name: "Potatoes (300 g)", price: 5 },
+  { id: "brownie", name: "Brownie chocolat", price: 2 },
+];
+
+// Formule du midi et du soir.
+export const formule = {
+  id: "kabanito",
+  name: "Menu Kabanito",
+  price: 7,
+  description:
+    "Sandwich + frites + boisson 33 cl au choix (sauf bière) + une sauce (fromagère, algérienne, samouraï, burger).",
+  availability: "Midi et soir",
+};
+
 export const drinks = [
   { name: "Canette 33 cl (Coca, Fanta…)", price: 1.5 },
-  { name: "Bouteille de soda", price: 3.0 },
   { name: "Red Bull 25 cl", price: 2.5 },
+  { name: "Soda / Tropico / Lipton Ice Tea (1,25 ou 1,5 L)", price: 3.0 },
   { name: "Oasis 2 L", price: 3.5 },
 ];
 
@@ -157,6 +314,7 @@ export const reviews = [
 export const tagLabels = {
   spicy: "Épicé",
   viande: "Viande",
+  poisson: "Poisson",
   crème: "Base crème",
   tomate: "Base tomate",
   végé: "Végé",

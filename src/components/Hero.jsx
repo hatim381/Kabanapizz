@@ -45,7 +45,7 @@ export default function Hero() {
           </div>
           <div className="hero__price-tag" aria-hidden="true">
             <span>dès</span>
-            <strong>9,50 €</strong>
+            <strong>10 €</strong>
           </div>
         </div>
       </div>

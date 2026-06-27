@@ -8,7 +8,7 @@ import Info from "./components/Info";
 import { Footer, CookieBanner } from "./components/Footer";
 import { CartProvider } from "./cart/CartContext";
 import CartDrawer from "./cart/CartDrawer";
-import { restaurant, hours, pizzas } from "./data/menu";
+import { restaurant, hours, pizzas, pizzaSizes } from "./data/menu";
 import "./App.css";
 
 // Donnees structurees Schema.org pour le SEO local (horaires, note, menu)
@@ -63,7 +63,13 @@ function injectStructuredData() {
           "@type": "MenuItem",
           name: p.name,
           description: `${p.base}, ${p.ingredients.join(", ")}`,
-          offers: { "@type": "Offer", price: p.price.toFixed(2), priceCurrency: "EUR" },
+          offers: {
+            "@type": "AggregateOffer",
+            priceCurrency: "EUR",
+            lowPrice: pizzaSizes[0].price.toFixed(2),
+            highPrice: pizzaSizes.at(-1).price.toFixed(2),
+            offerCount: pizzaSizes.length,
+          },
         })),
       },
     },

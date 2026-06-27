@@ -1,0 +1,42 @@
+PHOTOS DES PIZZAS
+=================
+
+Déposez ici une photo par pizza. Le nom du fichier doit correspondre
+EXACTEMENT à l'identifiant ci-dessous, en .jpg :
+
+  margherita.jpg
+  quatre-fromages.jpg
+  orientale.jpg
+  tex-mex.jpg
+  reine.jpg
+  hawaienne.jpg
+  cannibale.jpg
+  pecheur.jpg
+  kabana.jpg
+  campione.jpg
+  calzone.jpg
+  savoyarde.jpg
+  chevre-miel.jpg
+  norvegienne.jpg
+  vegetarienne.jpg
+  indiana.jpg
+  mexicaine.jpg
+  raclette.jpg
+  pepperonni-lover.jpg
+  jambon-lover.jpg
+  cheese-lover.jpg
+  merguez-lover.jpg
+
+La photo apparaît automatiquement sur la carte du site, sans rien
+modifier dans le code. Tant qu'un fichier est absent, un visuel de
+remplacement s'affiche à sa place.
+
+Conseils :
+- Format carré ou paysage (les cartes recadrent en 4:3).
+- ~1000 px de large suffisent ; visez moins de 300 Ko par image.
+- Si tu préfères le .png ou .webp, dis-le : on adapte le champ `image`
+  dans src/data/menu.js.
+
+Pour récupérer les photos depuis ton catalogue WhatsApp Business :
+ouvre WhatsApp Business > Catalogue > chaque produit > enregistre la
+photo, puis renomme le fichier comme ci-dessus.
