@@ -204,8 +204,10 @@
   background: linear-gradient(165deg, var(--charcoal-2), #1d1611);
   border: 1px solid var(--bark);
   border-radius: var(--radius-lg);
-  padding: 1.6rem;
+  overflow: hidden;
   position: relative;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
 }
 .pizza:hover { transform: translateY(-4px); border-color: rgba(232,84,30,0.5); box-shadow: var(--shadow); }
@@ -213,9 +215,30 @@
   border-color: rgba(242, 168, 60, 0.5);
   background: linear-gradient(165deg, #2a2017, #1d1611);
 }
+.pizza__media {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-bottom: 1px solid var(--bark);
+}
+.pizza__img { width: 100%; height: 100%; object-fit: cover; }
+.pizza:hover .pizza__img { transform: scale(1.04); }
+.pizza__img { transition: transform 0.4s ease; }
+.pizza__media-fallback {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(232, 84, 30, 0.28), transparent 62%),
+    linear-gradient(165deg, #2a2017, #181210);
+}
+.pizza__media-fallback span { font-size: 3.4rem; opacity: 0.55; filter: saturate(1.1); }
+.pizza__body { padding: 1.6rem; display: flex; flex-direction: column; flex: 1; }
 .pizza__badge {
   position: absolute;
-  top: -11px; left: 1.6rem;
+  top: 12px; left: 12px;
   background: linear-gradient(135deg, var(--ember), var(--honey));
   color: #1a0f08;
   font-size: 0.72rem;
@@ -223,6 +246,7 @@
   padding: 0.35em 0.8em;
   border-radius: 100px;
   letter-spacing: 0.02em;
+  box-shadow: 0 6px 16px -6px rgba(0, 0, 0, 0.7);
 }
 .pizza__top { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 0.4rem; }
 .pizza__name { font-size: 1.5rem; }
@@ -238,7 +262,7 @@
 .pizza__tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 .tag { font-size: 0.72rem; font-weight: 600; padding: 0.3em 0.7em; border-radius: 100px; border: 1px solid var(--bark); color: var(--cream-dim); }
 .tag--végé { color: var(--leaf); border-color: rgba(122,155,84,0.4); }
-.tag--spicy { color: var(--ember); border-color: rgba(232,84,30,0.4); }
+.tag--spicy { color: var(--ember-glow); border-color: rgba(232,84,30,0.5); }
 
 .drinks {
   margin-top: 3rem;
@@ -400,19 +424,20 @@
 
 /* ===================== CART : boutons menu ===================== */
 .pizza__add {
-  margin-top: 1.2rem;
+  margin-top: auto;
   width: 100%;
   font-family: var(--font-body);
   font-weight: 600;
   font-size: 0.95rem;
   padding: 0.7em 1em;
   border-radius: 100px;
-  border: 1px solid var(--bark);
-  background: transparent;
-  color: var(--cream);
+  border: 1px solid rgba(232, 84, 30, 0.55);
+  background: rgba(232, 84, 30, 0.1);
+  color: var(--ember-glow);
   cursor: pointer;
   transition: all 0.2s ease;
 }
+.pizza__body > .pizza__tags { margin-bottom: 1.2rem; }
 .pizza__add:hover {
   background: linear-gradient(135deg, var(--ember), var(--honey));
   border-color: transparent;
@@ -424,7 +449,7 @@
 .drinks__list li { align-items: center; }
 .drinks__add {
   flex-shrink: 0;
-  width: 30px; height: 30px;
+  width: 36px; height: 36px;
   margin-left: 0.6rem;
   border-radius: 50%;
   border: 1px solid var(--bark);

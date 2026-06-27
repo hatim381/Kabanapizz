@@ -57,29 +57,45 @@ export default function Menu() {
         <div className="menu__grid">
           {shown.map((p) => (
             <article key={p.id} className={`pizza ${p.signature ? "pizza--signature" : ""}`}>
-              {p.signature && <span className="pizza__badge">La signature 🔥</span>}
-              <div className="pizza__top">
-                <h3 className="pizza__name">{p.name}</h3>
-                <span className="pizza__price">{formatPrice(p.price)}</span>
+              <div className="pizza__media">
+                {p.image ? (
+                  <img
+                    src={p.image}
+                    alt={`Pizza ${p.name} : ${p.ingredients.join(", ")}`}
+                    className="pizza__img"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div className="pizza__media-fallback" aria-hidden="true">
+                    <span>🍕</span>
+                  </div>
+                )}
+                {p.signature && <span className="pizza__badge">La signature 🔥</span>}
               </div>
-              <p className="pizza__base">{p.base}</p>
-              <p className="pizza__ingredients">{p.ingredients.join(" · ")}</p>
-              <div className="pizza__tags">
-                {p.tags
-                  .filter((t) => tagLabels[t] && t !== "signature")
-                  .map((t) => (
-                    <span key={t} className={`tag tag--${t}`}>
-                      {tagLabels[t]}
-                    </span>
-                  ))}
+              <div className="pizza__body">
+                <div className="pizza__top">
+                  <h3 className="pizza__name">{p.name}</h3>
+                  <span className="pizza__price">{formatPrice(p.price)}</span>
+                </div>
+                <p className="pizza__base">{p.base}</p>
+                <p className="pizza__ingredients">{p.ingredients.join(" · ")}</p>
+                <div className="pizza__tags">
+                  {p.tags
+                    .filter((t) => tagLabels[t] && t !== "signature")
+                    .map((t) => (
+                      <span key={t} className={`tag tag--${t}`}>
+                        {tagLabels[t]}
+                      </span>
+                    ))}
+                </div>
+                <button
+                  className="pizza__add"
+                  onClick={() => add({ id: p.id, name: p.name, price: p.price })}
+                  aria-label={`Ajouter ${p.name} au panier`}
+                >
+                  Ajouter · {formatPrice(p.price)}
+                </button>
               </div>
-              <button
-                className="pizza__add"
-                onClick={() => add({ id: p.id, name: p.name, price: p.price })}
-                aria-label={`Ajouter ${p.name} au panier`}
-              >
-                Ajouter · {formatPrice(p.price)}
-              </button>
             </article>
           ))}
         </div>

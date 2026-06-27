@@ -44,10 +44,14 @@ export const hours = [
   { day: "Dimanche", index: 0, open: "18:00", close: "22:30", open2: null, close2: null },
 ];
 
+// Photos des pizzas (facultatif) : déposez un fichier dans /public/pizzas/
+// (ex. /public/pizzas/cannibale.jpg) puis renseignez le champ `image` ci-dessous.
+// Tant que `image` est vide, un visuel de remplacement soigné s'affiche.
 export const pizzas = [
   {
     id: "cannibale",
     name: "Cannibale",
+    image: "",
     base: "Sauce barbecue",
     ingredients: ["mozzarella", "merguez", "bœuf", "poulet rôti"],
     price: 12.5,
@@ -56,6 +60,7 @@ export const pizzas = [
   {
     id: "indiana",
     name: "Indiana",
+    image: "",
     base: "Crème fraîche",
     ingredients: ["mozzarella", "emmental", "poulet rôti", "oignons", "champignons"],
     price: 12.5,
@@ -64,6 +69,7 @@ export const pizzas = [
   {
     id: "kabana",
     name: "Kabana",
+    image: "",
     base: "Sauce tomate",
     ingredients: [
       "mozzarella",
@@ -82,6 +88,7 @@ export const pizzas = [
   {
     id: "chevre-miel",
     name: "Chèvre miel",
+    image: "",
     base: "Crème fraîche",
     ingredients: ["mozzarella", "fromage de chèvre", "miel"],
     price: 11.5,
@@ -90,6 +97,7 @@ export const pizzas = [
   {
     id: "margarita",
     name: "Margarita",
+    image: "",
     base: "Sauce tomate",
     ingredients: ["mozzarella", "olives noires", "origan"],
     price: 9.5,
@@ -98,6 +106,7 @@ export const pizzas = [
   {
     id: "reine",
     name: "Reine",
+    image: "",
     base: "Sauce tomate",
     ingredients: ["mozzarella", "jambon", "champignons"],
     price: 11.0,

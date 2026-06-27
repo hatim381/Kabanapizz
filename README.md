@@ -89,6 +89,9 @@ kabana-pizz/
 Tout le contenu éditable se trouve dans **`src/data/menu.js`** :
 
 - **Prix / pizzas** → tableau `pizzas`
+- **Photos des pizzas** → déposez l'image dans `public/pizzas/` (ex. `cannibale.jpg`)
+  puis renseignez le champ `image` de la pizza (ex. `image: "/pizzas/cannibale.jpg"`).
+  Champ vide = visuel de remplacement automatique.
 - **Boissons** → tableau `drinks`
 - **Horaires** → tableau `hours` (le statut ouvert/fermé se met à jour automatiquement)
 - **Avis** → tableau `reviews`
