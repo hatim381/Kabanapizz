@@ -15,6 +15,10 @@ export function useReveal() {
       return;
     }
 
+    // threshold 0 + rootMargin : se déclenche dès que le haut de l'élément
+    // entre dans le viewport, même si la section est plus haute que l'écran
+    // (sinon une section très haute n'atteint jamais un seuil élevé et reste
+    // invisible).
     const obs = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -22,7 +26,7 @@ export function useReveal() {
           obs.disconnect();
         }
       },
-      { threshold: 0.15 }
+      { threshold: 0, rootMargin: "0px 0px -60px 0px" }
     );
     obs.observe(el);
     return () => obs.disconnect();
