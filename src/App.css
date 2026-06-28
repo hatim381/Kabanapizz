@@ -295,7 +295,7 @@
 .extra--drink .extra__media { background: var(--charcoal-2); }
 .extra--drink .extra__img {
   object-position: center;
-  filter: saturate(0.9) contrast(1.04) brightness(1.04) sepia(0.05);
+  filter: contrast(1.03) brightness(1.02);
 }
 .extra__media-fallback {
   width: 100%;

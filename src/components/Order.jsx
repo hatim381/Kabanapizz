@@ -15,7 +15,7 @@ export default function Order() {
       icon: "📞",
       title: "À emporter",
       text: "Appelez, on prépare, vous passez la chercher. Le plus rapide et sans commission.",
-      cta: { label: `Appeler · ${restaurant.phone}`, href: `tel:${restaurant.phoneRaw}`, primary: true },
+      cta: { label: `Appeler · ${restaurant.phone.replace(/ /g, " ")}`, href: `tel:${restaurant.phoneRaw}`, primary: true },
     },
     {
       icon: "🛵",
