@@ -9,27 +9,27 @@ export default function Hero() {
 
   return (
     <section className="hero" id="top">
-      <h1 className="sr-only">
-        Kabana Pizz — pizzas artisanales à Brie-Comte-Robert
-      </h1>
       <div className="hero__glow" aria-hidden="true" />
       <div className="wrap hero__inner">
         <div className="hero__content">
           <span className="eyebrow">Kiosque à pizza · Brie-Comte-Robert</span>
+          <h1 className="hero__title">
+            La pizza qui enflamme <span className="hero__accent">le 77</span>.
+          </h1>
           <p className="hero__lead hero__lead--lg">
-            Pizzas artisanales · pâte fraîche · dès {fromPrice}
+            Pâte fraîche pétrie le jour même. 22 recettes à emporter dès {fromPrice}.
           </p>
 
           <div className="hero__actions">
             <a href="#carte" className="btn btn-primary">
-              Voir le menu
+              Voir la carte →
             </a>
             <button type="button" className="btn btn-ghost" onClick={toggleCart}>
               Commander
             </button>
           </div>
 
-          <div className="hero__meta">
+          <div className="hero__stats">
             <span className={`status-pill ${status.open ? "status-pill--open" : "status-pill--closed"}`}>
               <span className="status-dot" aria-hidden="true" />
               {status.open
@@ -38,8 +38,14 @@ export default function Hero() {
                 ? `Fermé · ouvre à ${status.opensAt}`
                 : status.label}
             </span>
-            <span className="hero__rating">
-              <strong>4,8/5</strong> <em>· 120+ avis Google &amp; Facebook</em>
+            <span className="hero__stat">
+              <strong>4,8/5</strong> <em>120+ avis</em>
+            </span>
+            <span className="hero__stat">
+              <strong>15-20 min</strong> <em>préparation</em>
+            </span>
+            <span className="hero__stat">
+              <strong>77170</strong> <em>Brie-Comte-Robert</em>
             </span>
           </div>
 
