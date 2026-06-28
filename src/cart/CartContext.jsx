@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useReducer } from "react";
+import { createContext, useContext, useEffect, useReducer, useRef, useState } from "react";
 
 const CartContext = createContext(null);
 
@@ -27,7 +27,7 @@ function reducer(state, action) {
       } else {
         items = [...state.items, { ...action.item, qty: 1 }];
       }
-      return { ...state, items, open: true };
+      return { ...state, items };
     }
     case "INC":
       return {
@@ -60,6 +60,8 @@ function reducer(state, action) {
 
 export function CartProvider({ children }) {
   const [state, dispatch] = useReducer(reducer, undefined, loadInitial);
+  const [toast, setToast] = useState(null);
+  const toastTimer = useRef(null);
 
   useEffect(() => {
     try {
@@ -75,12 +77,24 @@ export function CartProvider({ children }) {
   const count = state.items.reduce((n, i) => n + i.qty, 0);
   const total = state.items.reduce((s, i) => s + i.price * i.qty, 0);
 
+  const add = (item) => {
+    dispatch({ type: "ADD", item });
+    clearTimeout(toastTimer.current);
+    setToast({ name: item.name, key: Date.now() });
+    toastTimer.current = setTimeout(() => setToast(null), 3200);
+  };
+
   const value = {
     items: state.items,
     open: state.open,
     count,
     total,
-    add: (item) => dispatch({ type: "ADD", item }),
+    toast,
+    dismissToast: () => {
+      clearTimeout(toastTimer.current);
+      setToast(null);
+    },
+    add,
     inc: (id) => dispatch({ type: "INC", id }),
     dec: (id) => dispatch({ type: "DEC", id }),
     remove: (id) => dispatch({ type: "REMOVE", id }),

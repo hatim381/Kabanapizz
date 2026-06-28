@@ -7,7 +7,7 @@ import Reviews from "./components/Reviews";
 import Info from "./components/Info";
 import { Footer, CookieBanner } from "./components/Footer";
 import { CartProvider } from "./cart/CartContext";
-import CartDrawer from "./cart/CartDrawer";
+import CartDrawer, { CartToast } from "./cart/CartDrawer";
 import { restaurant, hours, pizzas, pizzaSizes } from "./data/menu";
 import "./App.css";
 
@@ -98,6 +98,7 @@ export default function App() {
       </main>
       <Footer />
       <CartDrawer />
+      <CartToast />
       <CookieBanner />
     </CartProvider>
   );

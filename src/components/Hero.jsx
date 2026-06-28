@@ -27,7 +27,11 @@ export default function Hero() {
           <div className="hero__meta">
             <span className={`status-pill ${status.open ? "status-pill--open" : "status-pill--closed"}`}>
               <span className="status-dot" aria-hidden="true" />
-              {status.open ? `${status.label} · jusqu'à ${status.until}` : status.opensAt ? `Ferme · ouvre à ${status.opensAt}` : status.label}
+              {status.open
+                ? `${status.label} · jusqu'à ${status.until} · prêt en ${status.prepTime}`
+                : status.opensAt
+                ? `Fermé · ouvre à ${status.opensAt}`
+                : status.label}
             </span>
             <span className="hero__rating">★★★★★ <em>· avis vérifiés Google &amp; Facebook</em></span>
           </div>

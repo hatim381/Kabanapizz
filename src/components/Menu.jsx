@@ -18,7 +18,7 @@ function formatPrice(p) {
 
 // Affiche la photo de la pizza, avec repli sur un visuel généré
 // si le fichier est absent ou ne charge pas.
-function PizzaMedia({ pizza }) {
+function PizzaMedia({ pizza, isHalal }) {
   const [error, setError] = useState(false);
   const showImg = pizza.image && !error;
 
@@ -38,6 +38,7 @@ function PizzaMedia({ pizza }) {
         </div>
       )}
       {pizza.signature && <span className="pizza__badge">La signature 🔥</span>}
+      {isHalal && <span className="pizza__badge pizza__badge--halal">Halal</span>}
     </div>
   );
 }
@@ -71,16 +72,18 @@ function ExtraMedia({ item, fallback, badge }) {
 function PizzaCard({ pizza }) {
   const { add } = useCart();
   const [size, setSize] = useState(pizzaSizes[0]);
+  const isHalal = pizza.ingredients.some((i) => /halal/i.test(i));
+  const ingredientsDisplay = pizza.ingredients.map((i) => i.replace(/\s*halal/i, ""));
 
   return (
     <article className={`pizza ${pizza.signature ? "pizza--signature" : ""}`}>
-      <PizzaMedia pizza={pizza} />
+      <PizzaMedia pizza={pizza} isHalal={isHalal} />
       <div className="pizza__body">
         <div className="pizza__top">
           <h3 className="pizza__name">{pizza.name}</h3>
         </div>
         <p className="pizza__base">{pizza.base}</p>
-        <p className="pizza__ingredients">{pizza.ingredients.join(" · ")}</p>
+        <p className="pizza__ingredients">{ingredientsDisplay.join(" · ")}</p>
         <div className="pizza__tags">
           {pizza.tags
             .filter((t) => tagLabels[t] && t !== "signature" && t !== "tomate" && t !== "crème")
@@ -220,7 +223,7 @@ export default function Menu() {
             <h3 className="drinks__title">Boissons</h3>
             <div className="extra__grid">
               {drinks.map((d) => (
-                <article key={d.id} className="extra">
+                <article key={d.id} className="extra extra--drink">
                   <ExtraMedia item={d} fallback="🥤" />
                   <div className="extra__body">
                     <span className="extra__name">{d.name}</span>

@@ -27,6 +27,7 @@ export function getOpenStatus(now = new Date()) {
         label: closingSoon ? "Ferme bientôt" : "Ouvert",
         until: minutesToLabel(end),
         closingSoon,
+        prepTime: "15-20 min",
       };
     }
   }

@@ -138,3 +138,31 @@ export default function CartDrawer() {
     </>
   );
 }
+
+// Confirmation discrète affichée après un ajout au panier, sans ouvrir le tiroir.
+export function CartToast() {
+  const { toast, dismissToast, openCart } = useCart();
+
+  if (!toast) return null;
+
+  return (
+    <div className="cart-toast" role="status" key={toast.key}>
+      <span className="cart-toast__icon" aria-hidden="true">✓</span>
+      <span className="cart-toast__text">
+        <strong>{toast.name}</strong> ajouté(e)
+      </span>
+      <button
+        className="cart-toast__action"
+        onClick={() => {
+          dismissToast();
+          openCart();
+        }}
+      >
+        Voir le panier
+      </button>
+      <button className="cart-toast__close" onClick={dismissToast} aria-label="Fermer">
+        ✕
+      </button>
+    </div>
+  );
+}
